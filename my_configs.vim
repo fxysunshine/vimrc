@@ -1,5 +1,5 @@
 " Configuration file for vim
-set modelines=0		" CVE-2007-2438
+set modelines=0    " CVE-2007-2438
 
 set nocompatible   " Use Vim defaults instead of 100% vi c ompatibility
 set number
@@ -37,6 +37,8 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'liuchengxu/vim-which-key'
 Plugin 'brtastic/vim-jsonviewer'
 Plugin 'iamcco/markdown-preview.vim'
+Plugin 'powerman/vim-plugin-AnsiEsc'   " USAGE :AnsiEsc  -- toggles Ansi escape sequence highlighting
+                                       "       :AnsiEsc! -- rebuilds highlighting for new/removed three or more element Ansi escape sequences.
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -119,8 +121,8 @@ let NERDTreeAutoDeleteBuffer=1
 """"""""""""""""""""""""""""""""
 "nnoremap <silent> <F5> :Rgrep<CR>
 let Grep_Default_Options = '-i'
-let Grep_Skip_Dirs = '.git .repo tests test'
-let Grep_Skip_Files = '*.bak *~ cscope.* tags *.swp *.so'
+let Grep_Skip_Dirs = '.git .repo tests test build out CMakeFiles out.gn'
+let Grep_Skip_Files = '*.bak *~ cscope.* tags *.swp *.so *.o'
 let Grep_Default_Filelist = '*.[chS] *.cc *.cpp *.asm *.java *.mk'
 
 """"""""""""""""""""""""""""""""
@@ -371,3 +373,13 @@ inoremap " ""<ESC>i
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {<CR>}<ESC>O
+
+"====================================
+" hightlight current line & column
+" USAGE: set cursorline   (set cul)
+"        set cursorcolumn (set cuc)
+"====================================
+"set cursorline
+"set cursorcolumn
+hi CursorLine   cterm=NONE ctermbg=gray ctermfg=black
+hi CursorColumn cterm=NONE ctermbg=blue ctermfg=black
