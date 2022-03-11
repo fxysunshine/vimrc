@@ -3,7 +3,7 @@ set modelines=0    " CVE-2007-2438
 
 set nocompatible   " Use Vim defaults instead of 100% vi c ompatibility
 set number
-set relativenumber  "rnu/nornu
+"set relativenumber  "rnu/nornu
 
 """"""""""""""""""""""""""""""
 " Vundle.vim
@@ -89,6 +89,9 @@ nnoremap <silent> <F10> :TlistToggle<CR>
 "nnoremap <silent> <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=prepare-commit-msg .<CR>
 
 nmap <C-]> g]
+":ts (:tagslist)
+":tp (:tagspreview)
+":tn (:tagsnext)
 
 """"""""""""""""""""""""""""""""
 " NERDTree settings
@@ -106,6 +109,9 @@ let NERDTreeShowBookmarks=1
 "let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
+
+"close vim if the only window left open is a NERDTree
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "nmap <C-j> <C-d>
 "nmap <C-k> <C-u>
@@ -363,7 +369,8 @@ imap <silent> <F12> <esc>:terminal<CR>
 
 nmap <silent> <C-w>= :resize +5<CR>
 nmap <silent> <C-w>- :resize -5<CR>
-nmap <silent> <C-w>, :vertical resize -5<CR>
+nmap <silent> <C-w>, :vertical resize +5<CR>
+nmap <silent> <C-w>. :vertical resize -5<CR>
 
 "================================
 " tools
